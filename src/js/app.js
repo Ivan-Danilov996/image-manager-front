@@ -5,21 +5,21 @@ const form = document.querySelector('form');
 
 async function fetchRequest(method, data) {
   if (method === 'GET') {
-    const response = await fetch('http://localhost:7070', {
+    const response = await fetch('https://image-manager-back.herokuapp.com/', {
       method: 'GET',
     });
     return response.json(); // parses JSON response into native JavaScript objects
   } if (data) {
     const formData = new FormData();
     formData.append('src', data);
-    const response = await fetch('http://localhost:7070', {
+    const response = await fetch('https://image-manager-back.herokuapp.com/', {
       method: 'POST',
       body: formData,
     });
     return response.json(); // parses JSON response into native JavaScript objects
   }
   const formData = new FormData(form);
-  const response = await fetch('http://localhost:7070', {
+  const response = await fetch('https://image-manager-back.herokuapp.com/', {
     method: 'POST',
     body: formData,
   });
@@ -41,7 +41,7 @@ function showImg(img) {
     });
     const image = document.createElement('div');
     image.className = 'image';
-    image.innerHTML = `<img src="http://localhost:7070/${img.link}" class='preview' data-id="${img.link}">`;
+    image.innerHTML = `<img src="https://image-manager-back.herokuapp.com/${img.link}" class='preview' data-id="${img.link}">`;
     image.insertAdjacentElement('beforeend', deleteEl);
     previewContainer.appendChild(image);
   } else {
@@ -61,7 +61,7 @@ function showImg(img) {
 
       const image = document.createElement('div');
       image.className = 'image';
-      image.innerHTML = `<img src="http://localhost:7070/${element}" class='preview' data-id="${element}">`;
+      image.innerHTML = `<img src="https://image-manager-back.herokuapp.com/${element}" class='preview' data-id="${element}">`;
       image.insertAdjacentElement('beforeend', deleteEl);
       previewContainer.appendChild(image);
     });
